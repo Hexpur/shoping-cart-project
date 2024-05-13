@@ -1,19 +1,31 @@
 import "./Filter.css";
+import { useState } from "react";
 
-export default function Filter({ productItems }) {
-  const categoryItems = productItems.map((product) => product.category);
-  const categoryUniqueItems = categoryItems.filter(
+function UniqueCategoriesHelper(list) {
+  const categoryItems = list.map((product) => product.category);
+  return categoryItems.filter(
     (category, index) => categoryItems.indexOf(category) === index
   );
+}
+export default function Filter({
+  productItems,
+  selectedTabHandler,
+  selectedTab,
+}) {
+  const ProductUniqueCategories = UniqueCategoriesHelper(productItems);
+
   return (
     <div className="filter">
       <ul className="filter__list">
-        {categoryUniqueItems.map((category, index) => (
+        {ProductUniqueCategories.map((category, index) => (
           <li key={index}>
-            <button>{category}</button>
+            <button onClick={() => selectedTabHandler(category)}>
+              {category}
+            </button>
           </li>
         ))}
       </ul>
+      {selectedTab}
     </div>
   );
 }

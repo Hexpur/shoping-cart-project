@@ -1,13 +1,15 @@
-import Card from "../Card.js";
+import Card from "../UI/Card.js";
 import ProductItem from "./ProductItem.js";
 import "./Products.css";
 
-function Products({ productItems }) {
+function Products({ productItems, selectedTab }) {
   return (
     <Card className="products">
-      {productItems.map((product, index) => (
-        <ProductItem key={index} {...product} />
-      ))}
+      {productItems
+        .filter((product) => product.category === selectedTab)
+        .map((product, index) => (
+          <ProductItem key={index} {...product} />
+        ))}
     </Card>
   );
 }

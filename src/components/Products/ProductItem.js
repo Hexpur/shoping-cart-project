@@ -1,6 +1,6 @@
 import "./ProductItem.css";
 import ProductDetails from "./ProductDetails.js";
-import Card from "../Card.js";
+import Card from "../UI/Card.js";
 
 function ProductItem(props) {
   return (
