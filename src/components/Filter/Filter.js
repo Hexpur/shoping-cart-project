@@ -19,13 +19,23 @@ export default function Filter({
       <ul className="filter__list">
         {ProductUniqueCategories.map((category, index) => (
           <li key={index}>
-            <button onClick={() => selectedTabHandler(category)}>
+            <button
+              className={selectedTab === category ? "active" : ""}
+              onClick={() => selectedTabHandler(category)}
+            >
               {category}
             </button>
           </li>
         ))}
       </ul>
-      {selectedTab}
+      <div className="filter__alert">
+        {`شما در حال مشاهده ${selectedTab} ${
+          selectedTab !== "همه" ? "ها " : ""
+        }هستید`}
+        {selectedTab !== "همه" && (
+          <span onClick={() => selectedTabHandler("همه")}>X</span>
+        )}
+      </div>
     </div>
   );
 }

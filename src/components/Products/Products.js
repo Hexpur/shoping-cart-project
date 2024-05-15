@@ -5,11 +5,13 @@ import "./Products.css";
 function Products({ productItems, selectedTab }) {
   return (
     <Card className="products">
-      {productItems
-        .filter((product) => product.category === selectedTab)
-        .map((product, index) => (
-          <ProductItem key={index} {...product} />
-        ))}
+      {selectedTab === "همه"
+        ? productItems.map((product, index) => (
+            <ProductItem key={index} {...product} />
+          ))
+        : productItems
+            .filter((product) => product.category === selectedTab)
+            .map((product, index) => <ProductItem key={index} {...product} />)}
     </Card>
   );
 }
