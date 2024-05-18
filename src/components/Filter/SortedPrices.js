@@ -1,7 +1,8 @@
 import "./Filter.css";
 
 function SortedPrices(props) {
-  const prices = [100, 200, 400];
+  const prices = [100, 200, 400, 1000];
+
   return (
     <div className="filter">
       <ul className="filter__list">

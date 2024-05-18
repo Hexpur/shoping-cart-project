@@ -10,10 +10,16 @@ const App = () => {
   function selectedTabHandler(category) {
     setSelectedTab(category);
   }
+
   const [selectedPrice, setSelectedPrice] = useState(null);
   function selectedPriceHandler(price) {
     setSelectedPrice(price);
   }
+
+  const filteredProducts = PRODUCT_DATA.filter(
+    (product) => selectedPrice === null || product.price < selectedPrice
+  );
+
   return (
     <>
       <SortedPrices
@@ -25,8 +31,9 @@ const App = () => {
         selectedTabHandler={selectedTabHandler}
         selectedTab={selectedTab}
       />
-      <Products productItems={PRODUCT_DATA} selectedTab={selectedTab} />
+      <Products productItems={filteredProducts} selectedTab={selectedTab} />
     </>
   );
 };
+
 export default App;
